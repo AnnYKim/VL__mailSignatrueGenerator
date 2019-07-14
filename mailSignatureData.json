@@ -1,0 +1,40 @@
+[{
+    "id": "",
+    "name": "손성우",
+    "nickname": "Vito",
+    "job": "CEO",
+    "lab": "",
+    "position": "대표",
+    "mail": "ceo",
+    "phone": "010-3156-9592"
+  }, {
+    "id": "",
+    "name": "전영미",
+    "nickname": "Joy",
+    "job": "Director",
+    "lab": "",
+    "position": "이사",
+    "mail": "joy",
+    "phone": "010-7758-1187"
+  },
+  {
+    "id": "",
+    "name": "김민지",
+    "nickname": "Lala",
+    "job": "Creative Derector",
+    "lab": "Creators Lab",
+    "position": "팀장",
+    "mail": "lala",
+    "phone": "010-7220-5749"
+  },
+  {
+    "id": "VLR1903002947",
+    "name": "김나영",
+    "nickname": "Nana",
+    "job": "UI/UX Publisher",
+    "lab": "Creators Lab",
+    "position": "선임",
+    "mail": "nana",
+    "phone": "010-2728-5936"
+  }
+]
