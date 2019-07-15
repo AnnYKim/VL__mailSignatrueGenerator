@@ -19,51 +19,28 @@
     </div>
     <div class="right">
       <div class="searchBox">
-        <label for="search">비토니언님의 이름을 말해주세요!</label>
+        <label for="search">비토니언님의 영문 닉네임을 말해주세요. <small>(닉네임이 없다면 한글로도 검색 가능해요!)</small></label>
         <input type="text" id="search" class="search" placeholder="My name is..." />
         <ul class="search-result">
         </ul>
-        <p class="linkToEnroll"><a class="linkToEnroll__link link" href="">이름이 등록되어 있지 않다면? (☞ 따지러가기)</a></p>
+        <p class="linkToEnroll"><a class="linkToEnroll__link link" target="_blank"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=nana@thevitolabs.com">이름이 등록되어 있지 않다면?
+            (☞ 따지러가기)</a></p>
       </div>
       <div class="modal">
         <div class="modal__back">
           <div class="modalClose-button">닫기</div>
           <div class="infoBox">
             <div class="infoBox__alert">
-              <p class="title"><span class="infoBox__name">김나영</span>님, <br />등록된 정보가 맞는지 확인해주세요. </p>
+              <p class="title"><span class="infoBox__name"></span>님, <br />등록된 정보가 맞는지 확인해주세요. </p>
               <p class="hide-mo">본인의 정보가 맞는지 확인해주세요. 내용을 직접 입력하여 임의로 바꿀 수 있습니다.</p>
               <p class="hide-mo">등록된 데이터를 변경하고 싶다면, 아래 링크를 눌러 담당자에게 문의하세요.</p>
-              <a class="infoBox__link link" href="">누락된 정보가 있거나 사실과 다르다면? (☞ 따지러가기)</a>
+              <a class="infoBox__link link" target="_blank"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=nana@thevitolabs.com">누락된 정보가 있거나 사실과 다르다면? (☞
+                따지러가기)</a>
             </div>
             <ul class="infoBox-result">
-              <li>
-                <label for="infoBox-name">이름</label>
-                <input type="text" id="infoBox-name" />
-              </li>
-              <li>
-                <label for="infoBox-nickname">별명</label>
-                <input type="text" id="infoBox-nickname" />
-              </li>
-              <li>
-                <label for="infoBox-job">직무</label>
-                <input type="text" id="infoBox-job" />
-              </li>
-              <li>
-                <label for="infoBox-lab">소속</label>
-                <input type="text" id="infoBox-lab" />
-              </li>
-              <li>
-                <label for="infoBox-position">직급</label>
-                <input type="text" id="infoBox-position" />
-              </li>
-              <li>
-                <label for="infoBox-mail">메일주소</label>
-                <input type="text" id="infoBox-mail" />
-              </li>
-              <li>
-                <label for="infoBox-phone">전화번호</label>
-                <input type="text" id="infoBox-phone" />
-              </li>
+
             </ul>
             <button class="generate-button">이대로 진행할게요.</button>
           </div>
@@ -71,10 +48,6 @@
       </div>
     </div>
   </div>
-  <!-- <div>
-    <p>아래 정보가 맞는지 확인해주세요.</p>
-    <button>생성하기</button>
-  </div> -->
 
 
   <script src="generator.js"></script>

@@ -113,7 +113,7 @@ body {
   }
 
   h2 {
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 10px;
     font-size: 1em;
   }
@@ -121,6 +121,10 @@ body {
   p {
     font-size: 0.62em;
     color: #31292d;
+  }
+
+  img {
+    width: 70px;
   }
 
 
@@ -152,6 +156,8 @@ body {
   }
 
   .search {
+    position: relative;
+    z-index: 1;
     display: block;
     width: 100%;
     padding: 0px 0px 4px;
@@ -162,6 +168,7 @@ body {
     outline: 0;
     color: #231815;
     font-weight: bold;
+    text-transform: lowercase;
 
     @include res--tablet {
       font-size: 35px;
@@ -169,6 +176,7 @@ body {
 
     &::placeholder {
       color: rgba(197, 197, 197, 0.5);
+      text-transform: initial;
     }
 
     &:focus::placeholder {
@@ -179,10 +187,12 @@ body {
   .search-result {
     max-height: calc(100vh - 375px);
     overflow: auto;
-    margin: 0px 0 30px 0;
+    margin: -1px 0 30px 0;
     padding: 0;
     list-style: none;
     box-shadow: 0px 20px 30px -10px rgba(20, 20, 20, 0.07);
+    border: 1px solid #d6d6d6;
+    border-top: 0;
 
     li {
       display: flex;
@@ -192,23 +202,25 @@ body {
       color: #231815;
       line-height: 43px;
       border: 1px solid #f1f1f1;
-      border-left: 1px solid #e7e7e7;
-      border-right: 1px solid #e7e7e7;
-      border-bottom: 0;
+      // border-left: 1px solid #e7e7e7;
+      // border-right: 1px solid #e7e7e7;
+      // border-bottom: 0;
       cursor: pointer;
 
+      &:focus {
+        background-color: rgba(240, 240, 240, 0.4);
+        outline: 0;
+      }
+
       .name,
-      .population {
+      .nickname {
         pointer-events: none;
       }
 
-      &:first-child {
-        border-top: 0;
-      }
 
-      &:last-child {
-        border-bottom: 1px solid #e7e7e7;
-      }
+      // &:last-child {
+      //   border-bottom: 1px solid #e7e7e7;
+      // }
 
       &:hover {
         background-color: rgba(240, 240, 240, 0.4);
@@ -223,6 +235,7 @@ body {
         font-style: normal;
         font-weight: bold;
         text-decoration: underline;
+        text-transform: capitalize;
       }
     }
   }
@@ -245,7 +258,20 @@ body {
   }
 }
 
+@keyframes fadeIn {
+  0% {
+    background: rgba(0, 0, 0, .0);
+  }
+
+  100% {
+    display: flex;
+    background: rgba(0, 0, 0, .7);
+  }
+}
+
+
 .modal {
+  z-index: 999;
   position: fixed;
   top: 0;
   left: 0;
@@ -253,14 +279,23 @@ body {
   min-width: 100vw;
   height: 100vh;
   box-sizing: border-box;
-  background: rgba(0, 0, 0, 0.6);
+  // background: rgba(0, 0, 0, 0.6);
   display: none;
   // display: flex;
   justify-content: center;
   align-items: center;
 
+  &-hide {}
+
+
   &-show {
     display: flex;
+    animation: fadeIn .4s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+
+    .modal__back {
+      transform: translateY(0px);
+      transition: transform .3s;
+    }
   }
 
 
@@ -269,11 +304,14 @@ body {
     // width: auto;
     overflow: auto;
     background: #fff;
-    max-width: 740px;
-    padding: 58px 54px 46px;
+    max-width: 720px;
+    padding: 58px 54px 40px;
     height: calc(100vh - 20px);
     box-sizing: border-box;
-    max-height: 600px;
+    max-height: 560px;
+    transform: translateY(200px);
+    transition: transform .5s cubic-bezier(0.165, 0.840, 0.440, 1.000);
+    transition-delay: 0.4s;
 
     .modalClose-button {
       position: absolute;
@@ -297,7 +335,7 @@ body {
   }
 
   .infoBox {
-    font-size: 14px;
+    font-size: 13px;
     box-sizing: border-box;
 
     @include res--tablet {
@@ -362,7 +400,7 @@ body {
   }
 
   input {
-    width: 200px;
+    width: 210px;
     height: 32px;
     border: 1px solid rgb(173, 173, 173);
     font-size: 14px;
@@ -376,6 +414,7 @@ body {
       font-size: 13px;
     }
 
+
     &[readonly] {
       background: #f8f8f8;
     }
@@ -384,6 +423,9 @@ body {
       border: 1px solid rgb(88, 88, 88);
     }
 
+    &.empty {
+      background-color: black;
+    }
   }
 
   .infoBox-modify {
@@ -442,7 +484,8 @@ body {
   margin-left: auto;
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:focus {
     // color: #000;
     color: #f7e959;
     background-color: #f7e959;
