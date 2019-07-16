@@ -2,7 +2,7 @@
 
 const endpoint =
   // "https://raw.githubusercontent.com/AnnYKim/VL__mailSignatrueGenerator/master/mailSignatureData.json";
-  "https://gist.githubusercontent.com/AnnYKim/38694a70e8824bf3bae383b263ae78d7/raw/e329a1f00a400adb9d9c4290dccbbedbc629860f/testtest.json";
+  "https://gist.githubusercontent.com/AnnYKim/38694a70e8824bf3bae383b263ae78d7/raw/89a5c04f0b64f0aa8b0e01d98b5c54f7ea9c9e19/testtest.json";
 // "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json";
 
 const people = [];
@@ -79,7 +79,7 @@ function displayMatches() {
         <p>
           <span class="name">${personName}</span>
         </p>
-          <p class="population">${data.lab}</p>
+          <p class="position">${data.position}</p>
         </li>`;
       } else {
         return `
@@ -88,7 +88,7 @@ function displayMatches() {
           <span class="nickanme">${personNickname}</span>
           <span class="name">(${personName})</span>
         </p>
-          <p class="population">${data.position}</p>
+          <p class="position">${data.position}</p>
         </li>`;
       }
     })
@@ -191,18 +191,24 @@ const generateInfo = function (e) {
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 
-<body>
+<body id="body">
 
-
-  <table width="100%" cellpadding="0" cellspacing="0" style="table-layout: fixed;margin-top:340px;">
+  <style>#body a {
+    color: inherit;
+    text-decoration: none;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    line-height: inherit;}</style>
+  <table width="100%" cellpadding="0" cellspacing="0" style="table-layout: fixed;margin-top:200px;">
     <tbody>
       <tr>
         <td><img src="https://vitolabimages.s3.ap-northeast-2.amazonaws.com/mailSignature/logo-symbol.png"
-            alt="VitoLabs Logo" style="display:block;width:34px;margin:0;padding:0;"></td>
+            alt="VitoLabs Logo" style="display:block;width:32px;margin:0;padding:0;"></td>
       </tr>
       <tr>
         <td>
-          <p style="font-size:20px;color:#231815;margin-top:14px;margin-bottom:10px;line-height: 1;
+          <p style="font-size:20px;color:#231815;margin-top:14px;margin-bottom:6px;line-height: 1;
             font-weight:900;">
             Hello, I'm ${infoListArray[1]}!</p>
         </td>
@@ -216,7 +222,7 @@ const generateInfo = function (e) {
       </tr>
       <tr>
         <td>
-          <p style="font-size:14px;color:#231815;line-height:1;font-weight:400;"><strong style="font-size:14px;color:#231815;line-height:1;font-weight: 900;" >${infoListArray[0]}</strong><span style="font-size:14px;color: #231815;margin-left:3px;line-height:1;font-weight: 400;">${infoListArray[3]}</span><span style="font-size:14px;display:inline-block;width: 2px;height:12px;vertical-align:middle;background: #231815;margin-left:6px;margin-top:-0.5px;margin-right:6px;"></span><span style="font-size:14px;">${infoListArray[2]}</span> </p><p style="font-size:14px;color:#231815;line-height:1;font-weight:400;margin-top:5px;margin-bottom:5px;"><astyle="color:#231815;text-decoration:none;">${infoListArray[4]}</a><span style="display:inline-block;width:2px;height:12px;vertical-align:top;line-height:1;background:#231815;margin-top:1px;margin-left:8px;margin-right:8px;"></span><a style="color:#231815;margin:0;padding:0;text-decoration:none;">`;
+          <p style="font-size:14px;color:#231815;line-height:1;font-weight:400;margin:0;"><strong style="font-size:14px;color:#231815;line-height:1;font-weight: 900;" >${infoListArray[0]}</strong><span style="font-size:14px;color: #231815;margin-left:3px;line-height:1;font-weight: 400;">${infoListArray[3]}</span><span style="display:inline-block;width:2px;height:13px;vertical-align:top;line-height:1;background:#231815;margin-top:1px;margin-left:7px;margin-right:7px;"></span><span style="font-size:15px;font-weight:900;">${infoListArray[2]}</span> </p><p style="font-size:14px;color:#231815;line-height:1;font-weight:400;margin:0;margin-top:9px;"><a style="font-size:14p;xcolor:#231815;text-decoration:none!important;">${infoListArray[4]}</a><span style="display:inline-block;width:2px;height:12px;vertical-align:top;line-height:1;background:#231815;margin-top:1px;margin-left:7px;margin-right:7px;"></span><a style="color:#231815;margin:0;padding:0;text-decoration:none;">`;
 
   if (infoListArray[5] === "") {
     htmlData += ""
@@ -224,7 +230,7 @@ const generateInfo = function (e) {
     htmlData += `${(infoListArray[5].split('-')[0])}. ${(infoListArray[5].split('-')[1])}. ${(infoListArray[5].split('-')[2])}`;
   };
 
-  htmlData += `</a></p><p style="font-size:14px;color:#231815;line-height:1;font-weight:400;"><img src="https://vitolabimages.s3.ap-northeast-2.amazonaws.com/mailSignature/logo-typo.png" alt="VitoLabs Logo" style="display:inline-block;width:78px;margin:0;margin-bottom:1px;padding:0;line-height:1; vertical-align: middle;"><span style="font-size:14px;color:#231815;line-height: 1;
+  htmlData += `</a></p><p style="font-size:14px;color:#231815;line-height:1;font-weight:400;margin:0;margin-top:8px;"><img src="https://vitolabimages.s3.ap-northeast-2.amazonaws.com/mailSignature/logo-typo.png" width="70" alt="VitoLabs Logo" style="display:inline-block;margin:0;padding:0;line-height:1; vertical-align: middle;"><span style="font-size:14px;color:#231815;line-height: 1;
             font-weight:400;margin-left:6px;">서울시 중구 삼일대로 <a style="color:#231815;margin:0;padding:0;text-decoration:none;">343, 16</a>층
               비토랩스 (<a style="color:#231815;margin:0;padding:0;text-decoration:none;">04538</a>)</span></p>
         </td>
@@ -241,7 +247,7 @@ const generateInfo = function (e) {
 </html>
   `;
 
-  var win = window.open("", "", "width=700,height=600,resizable=yes");
+  var win = window.open("", "", "width=700,height=450,resizable=yes,top=0,left=0,");
 
   win.document.write(htmlData);
   win.document.title = `${infoName}님의 메일서명`;
@@ -255,5 +261,6 @@ function testFunc(e) {
     showModal(e);
   }
 }
-searchInput.addEventListener("keyup", displayMatches);
+searchInput.addEventListener("input", displayMatches);
+// searchInput.addEventListener("change", displayMatches);
 resultArea.addEventListener("keyup", testFunc);
