@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./style.css">
-  <title>Document</title>
+  <title>Vito Labs Mail Signature Generator</title>
 </head>
 
 <body>
@@ -15,10 +15,10 @@
       <h1><span class="hide">We're VitoLabs!</span>
         <img src="https://vitolabimages.s3.ap-northeast-2.amazonaws.com/mailSignature/logo-symbol.png" alt=""></h1>
       <h2>Mail Signature Generator</h2>
-      <p>메일서명 생성기입니다.<br />검색창에 이름을 입력한 뒤 선택해주세요 :)</p>
+      <p>메일서명 생성기입니다.<br />각 입력란을 작성한 다음 생성 버튼을 누르세요 :-|</p>
     </div>
     <div class="right">
-      <div class="searchBox">
+      <!-- <div class="searchBox">
         <label for="search">비토니언님의 영문 닉네임을 말해주세요. <small>(닉네임이 없다면 한글로도 검색 가능해요!)</small></label>
         <input type="text" id="search" class="search" placeholder="My name is..." />
         <ul class="search-result">
@@ -26,26 +26,52 @@
         <p class="linkToEnroll"><a class="linkToEnroll__link link" target="_blank"
             href="https://mail.google.com/mail/?view=cm&fs=1&to=nana@thevitolabs.com">이름이 등록되어 있지 않다면?
             (☞ 따지러가기)</a></p>
-      </div>
-      <div class="modal">
-        <div class="modal__back">
-          <div class="modalClose-button">닫기</div>
-          <div class="infoBox">
-            <div class="infoBox__alert">
-              <p class="title"><span class="infoBox__name"></span>님, <br />등록된 정보가 맞는지 확인해주세요. </p>
-              <p class="hide-mo">본인의 정보가 맞는지 확인해주세요. 내용을 직접 입력하여 임의로 바꿀 수 있습니다.</p>
-              <p class="hide-mo">등록된 데이터를 변경하고 싶다면, 아래 링크를 눌러 담당자에게 문의하세요.</p>
-              <a class="infoBox__link link" target="_blank"
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=nana@thevitolabs.com">누락된 정보가 있거나 사실과 다르다면? (☞
-                따지러가기)</a>
-            </div>
-            <ul class="infoBox-result">
 
-            </ul>
-            <button class="generate-button">이대로 진행할게요.</button>
-          </div>
+      </div> -->
+
+      <div class="infoBox">
+        <div class="infoBox__alert">
+          <div class="title-big">Hello, Vitonion!</div>
+          <p class="title">비토니언이 되신 걸 축하드립니다!<br />소중한 정보를 저에게만 살짝 알려주세요. </p>
+          <p class="hide-mo">아래 입력한 내용에 따라 메일 서명이 만들어집니다. 내용은 저장되지 않으니 마음껏 쓰세요.<br /> 메일 서명 적용 방법은 <a href="#">여기</a>를
+            참고하시면 됩니다.</p>
         </div>
+        <form id="mailForm">
+          <ul class="infoBox-result">
+            <li>
+              <label>이름</label>
+              <input type="text" name="name" placeholder="ex) 김나나" />
+            </li>
+            <li>
+              <label>별명(영문)</label>
+              <input type="text" name="nickname" placeholder="ex) Nana" />
+            </li>
+            <li>
+              <label>영문직함</label>
+              <input type="text" name="job" placeholder="ex) Designer" />
+            </li>
+            <li>
+              <label>국문직함</label>
+              <input type="text" name="position" placeholder="ex) 사원" />
+            </li>
+            <li>
+              <label>메일주소</label>
+              <input type="text" name="mail" placeholder="ex) nana@thevitolabs.com" />
+            </li>
+            <li>
+              <label>휴대전화번호</label>
+              <input type="text" name="phone" placeholder="ex) 010-1234-5678" />
+            </li>
+          </ul>
+        </form>
+        <p class="formError"></p>
+        <button class="generate-button">이대로 진행할게요.</button>
       </div>
+      <p class="infoBox__link">
+        <a class="link" target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&to=nana@thevitolabs.com">사이트를
+          보는 데 문제가 있으신가요? (☞
+          따지러가기)</a>
+      </p>
     </div>
   </div>
 

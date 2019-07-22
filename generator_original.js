@@ -1,98 +1,105 @@
-const infoName = document.querySelector(".infoBox__name");
+const endpoint =
+  "https://gist.githubusercontent.com/AnnYKim/5c0cc78d6b2569e4b83358544cc40c17/raw/4908d304d050779ca200791ed60009b5fd93ea04/testdata.json";
+
+const people = [];
+const searchInput = document.querySelector(".search");
+const resultArea = document.querySelector(".search-result");
 const infoResult = document.querySelector(".infoBox-result");
+const modal = document.querySelector(".modal");
+const modalClose = modal.children[0].children[0];
+const infoName = document.querySelector(".infoBox__name");
 const generateButton = document.querySelector(".generate-button");
 
-function validateForm() {
-  var mailForm = document.forms["mailForm"];
-  var name = mailForm['name'];
-  var nickname = mailForm['nickname'];
-  var job = mailForm['job'];
-  var position = mailForm['position'];
-  var mail = mailForm['mail'];
-  var phone = mailForm['phone'];
-  var formError = document.querySelector(".formError");
-  var message = "";
-  var nicknamePattern = /^[a-zA-Z]+$/;
-  var emailPattern = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
-  var phonePattern = /^01([0|1|6|7|8|9]?)-([0-9]{3,4})-([0-9]{3,4})$/;
+// 1. fetch로 파일내용 가져오기
+fetch(endpoint)
+  .then(blob => blob.json())
+  .then(data => people.push(...data));
 
-  if (name.value === "") {
-    message = "앗, 잠시만요! 이름이 빠져있어요."
-    formError.innerHTML = message;
-    name.focus();
-    return false;
-  }
-
-  if (nickname.value === "") {
-    message = "앗, 잠시만요! 별명이 빠져있어요."
-    formError.innerHTML = message;
-    nickname.focus();
-    return false;
-  }
-
-  if (job.value === "") {
-    message = "앗, 잠시만요! 영문직함이 빠져있어요."
-    formError.innerHTML = message;
-    job.focus();
-    return false;
-  }
-
-  if (position.value === "") {
-    message = "앗, 잠시만요! 국문직함이 빠져있어요."
-    formError.innerHTML = message;
-    position.focus();
-    return false;
-  }
-
-  if (mail.value === "") {
-    message = "앗, 잠시만요! 메일주소가 빠져있어요."
-    formError.innerHTML = message;
-    mail.focus();
-    return false;
-  }
-
-  if (phone.value === "") {
-    message = "앗, 잠시만요! 휴대전화번호가 빠져있어요."
-    formError.innerHTML = message;
-    phone.focus();
-    return false;
-  }
-
-  if (!nicknamePattern.test(nickname.value)) {
-    message = "앗, 잠시만요! 별명은 영문으로 입력해주세요."
-    formError.innerHTML = message;
-    nickname.focus();
-    return false;
-  }
-
-  if (!nicknamePattern.test(job.value)) {
-    message = "앗, 잠시만요! 영문직함은 영문으로 입력해주세요."
-    formError.innerHTML = message;
-    job.focus();
-    return false;
-  }
-
-  if (!emailPattern.test(mail.value)) {
-    message = "앗, 잠시만요! 메일주소 형식을 확인해주세요."
-    formError.innerHTML = message;
-    mail.focus();
-    return false;
-  }
-
-
-  if (!phonePattern.test(phone.value)) {
-    message = "앗, 잠시만요! 전화번호는 10~11자의 하이픈 형태로 입력해주세요."
-    formError.innerHTML = message;
-    phone.focus();
-    return false;
-  }
-
-
-  generateInfo();
+// 2. 단어가 일치하는 데이터만 새 배열로 만들기
+function findMatches(word, arr) {
+  return arr.filter(place => {
+    const regex = new RegExp(word, "gi");
+    // return place.city.match(regex) || place.state.match(regex);
+    return place.name.match(regex) || place.nickname.match(regex);
+  });
 }
 
-const generateInfo = function (e) {
-  var infoList = infoResult.children;
+// 3. 일치하는 단어 보여주기
+function displayMatches() {
+  const matchArray = findMatches(this.value, people);
+  if (this.value === "") {
+    resultArea.innerHTML = "";
+    return false;
+  }
+  resultArea.innerHTML = matchArray
+    .map(data => {
+      const regex = new RegExp(this.value, "gi");
+      const personName = data.name.replace(
+        regex,
+        `<em class="accent">${this.value.toLowerCase()}</em>`
+      );
+      const personNickname = data.nickname.replace(
+        regex,
+        `<em class="accent">${this.value.toLowerCase()}</em>`
+      );
+      if (personNickname === "") {
+        return `
+        <li class="hi" tabindex="0">
+        <p>
+          <span class="name">${personName}</span>
+        </p>
+          <p class="position">${data.position}</p>
+        </li>`;
+      } else {
+        return `
+        <li class="hi" tabindex="0">
+        <p>
+          <span class="nickanme">${personNickname}</span>
+          <span class="name">(${personName})</span>
+        </p>
+          <p class="position">${data.position}</p>
+        </li>`;
+      }
+    })
+    .join("");
+}
+
+// 4. 모달 숨기고 보여주기
+const hideModal = function() {
+  modal.classList.remove("modal-show");
+  modal.classList.add("modal-hide");
+};
+const showModal = function(e) {
+  modal.classList.remove("modal-hide");
+  modal.classList.add("modal-show");
+  var info = findMatches(e.target.children[0].children[0].innerText, people);
+  const infoArray = Object.values(info[0]);
+  const infoList = [
+    "이름",
+    "별명",
+    "영문직함",
+    "국문직함",
+    "메일주소",
+    "전화번호"
+  ];
+  let infoHtml = "";
+  for (let i = 0; i < infoArray.length; i++) {
+    infoHtml += `<li><label>${infoList[i]}</label>
+                <input type="text" value="${infoArray[i]}"/></li>`;
+  }
+  infoName.innerText = info[0].name;
+  infoResult.innerHTML = infoHtml;
+};
+
+const keyupHandler = function(e) {
+  if (event.keyCode === 13) {
+    showModal(e);
+  }
+};
+
+// 5. 화면에 데이터 보여주기
+const generateInfo = function(e) {
+  const infoList = infoResult.children;
   const infoListArray = [];
   const infoName = infoList[0].children[1].value;
 
@@ -200,5 +207,9 @@ const generateInfo = function (e) {
   win.document.title = `${infoName}님의 메일서명`;
 };
 
-
-generateButton.addEventListener("click", validateForm);
+generateButton.addEventListener("click", generateInfo);
+resultArea.addEventListener("click", showModal);
+modalClose.addEventListener("click", hideModal);
+searchInput.addEventListener("input", displayMatches);
+// searchInput.addEventListener("change", displayMatches);
+resultArea.addEventListener("keyup", keyupHandler);

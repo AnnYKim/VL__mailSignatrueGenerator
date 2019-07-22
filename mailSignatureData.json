@@ -1,40 +1,48 @@
 [{
-    "id": "",
     "name": "손성우",
     "nickname": "Vito",
-    "job": "CEO",
-    "lab": "",
+    "job": "Representative",
     "position": "대표",
-    "mail": "ceo",
+    "mail": "ceo@thevitolabs.com",
     "phone": "010-3156-9592"
   }, {
-    "id": "",
     "name": "전영미",
     "nickname": "Joy",
-    "job": "Director",
-    "lab": "",
+    "job": "Executive Director",
     "position": "이사",
-    "mail": "joy",
+    "mail": "joy@thevitolabs.com",
     "phone": "010-7758-1187"
   },
   {
-    "id": "",
     "name": "김민지",
     "nickname": "Lala",
-    "job": "Creative Derector",
-    "lab": "Creators Lab",
+    "job": "Creators Lab Leader",
     "position": "팀장",
-    "mail": "lala",
+    "mail": "lala@thevitolabs.com",
     "phone": "010-7220-5749"
   },
   {
-    "id": "VLR1903002947",
     "name": "김나영",
     "nickname": "Nana",
-    "job": "UI/UX Publisher",
-    "lab": "Creators Lab",
+    "job": "User Interface & Experience Creator",
     "position": "선임",
-    "mail": "nana",
+    "mail": "nana@thevitolabs.com",
     "phone": "010-2728-5936"
+  },
+  {
+    "name": "장기숙",
+    "nickname": "",
+    "job": "",
+    "position": "팀장",
+    "mail": "",
+    "phone": ""
+  },
+  {
+    "name": "테스트",
+    "nickname": "test",
+    "job": "Lorem ipsum dolor sit amet",
+    "position": "Tester",
+    "mail": "test@testtteeeest.test",
+    "phone": "010-1111-2222"
   }
 ]
