@@ -382,7 +382,7 @@ body {
   }
 
   .formError {
-    color: crimson;
+    color: #e84627;
     min-height: 19px;
     margin-bottom: 20px;
   }
@@ -564,5 +564,14 @@ body {
       display: block;
       color: #000;
     }
+  }
+}
+
+.externalLink {
+  color: black;
+  text-decoration: underline;
+
+  &:hover {
+    color: #e84627;
   }
 }

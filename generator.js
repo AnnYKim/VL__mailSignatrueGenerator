@@ -4,94 +4,93 @@ const generateButton = document.querySelector(".generate-button");
 
 function validateForm() {
   var mailForm = document.forms["mailForm"];
-  var name = mailForm['name'];
-  var nickname = mailForm['nickname'];
-  var job = mailForm['job'];
-  var position = mailForm['position'];
-  var mail = mailForm['mail'];
-  var phone = mailForm['phone'];
+  var name = mailForm["name"];
+  var nickname = mailForm["nickname"];
+  var job = mailForm["job"];
+  var position = mailForm["position"];
+  var mail = mailForm["mail"];
+  var phone = mailForm["phone"];
   var formError = document.querySelector(".formError");
   var message = "";
-  var nicknamePattern = /^[a-zA-Z]+$/;
+  var nicknamePattern = /^[a-zA-Z\s]+$/;
   var emailPattern = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
   var phonePattern = /^01([0|1|6|7|8|9]?)-([0-9]{3,4})-([0-9]{3,4})$/;
 
   if (name.value === "") {
-    message = "앗, 잠시만요! 이름이 빠져있어요."
+    message = "앗, 잠시만요! 이름이 빠져있어요.";
     formError.innerHTML = message;
     name.focus();
     return false;
   }
 
   if (nickname.value === "") {
-    message = "앗, 잠시만요! 별명이 빠져있어요."
+    message = "앗, 잠시만요! 별명이 빠져있어요.";
     formError.innerHTML = message;
     nickname.focus();
     return false;
   }
 
   if (job.value === "") {
-    message = "앗, 잠시만요! 영문직함이 빠져있어요."
+    message = "앗, 잠시만요! 영문직함이 빠져있어요.";
     formError.innerHTML = message;
     job.focus();
     return false;
   }
 
   if (position.value === "") {
-    message = "앗, 잠시만요! 국문직함이 빠져있어요."
+    message = "앗, 잠시만요! 국문직함이 빠져있어요.";
     formError.innerHTML = message;
     position.focus();
     return false;
   }
 
   if (mail.value === "") {
-    message = "앗, 잠시만요! 메일주소가 빠져있어요."
+    message = "앗, 잠시만요! 메일주소가 빠져있어요.";
     formError.innerHTML = message;
     mail.focus();
     return false;
   }
 
   if (phone.value === "") {
-    message = "앗, 잠시만요! 휴대전화번호가 빠져있어요."
+    message = "앗, 잠시만요! 휴대전화번호가 빠져있어요.";
     formError.innerHTML = message;
     phone.focus();
     return false;
   }
 
   if (!nicknamePattern.test(nickname.value)) {
-    message = "앗, 잠시만요! 별명은 영문으로 입력해주세요."
+    message = "앗, 잠시만요! 별명은 영문으로 입력해주세요.";
     formError.innerHTML = message;
     nickname.focus();
     return false;
   }
 
-  if (!nicknamePattern.test(job.value)) {
-    message = "앗, 잠시만요! 영문직함은 영문으로 입력해주세요."
-    formError.innerHTML = message;
-    job.focus();
-    return false;
-  }
+  // if (!nicknamePattern.test(job.value)) {
+  //   message = "앗, 잠시만요! 영문직함은 영문으로 입력해주세요.";
+  //   formError.innerHTML = message;
+  //   job.focus();
+  //   return false;
+  // }
 
   if (!emailPattern.test(mail.value)) {
-    message = "앗, 잠시만요! 메일주소 형식을 확인해주세요."
+    message = "앗, 잠시만요! 메일주소 형식을 확인해주세요.";
     formError.innerHTML = message;
     mail.focus();
     return false;
   }
 
-
   if (!phonePattern.test(phone.value)) {
-    message = "앗, 잠시만요! 전화번호는 10~11자의 하이픈 형태로 입력해주세요."
+    message = "앗, 잠시만요! 전화번호는 10~11자의 하이픈 형태로 입력해주세요.";
     formError.innerHTML = message;
     phone.focus();
     return false;
   }
 
-
+  formError.innerHTML = "";
   generateInfo();
 }
 
-const generateInfo = function (e) {
+const generateInfo = function(e) {
   var infoList = infoResult.children;
   const infoListArray = [];
   const infoName = infoList[0].children[1].value;
@@ -199,6 +198,5 @@ const generateInfo = function (e) {
   win.document.write(htmlData);
   win.document.title = `${infoName}님의 메일서명`;
 };
-
 
 generateButton.addEventListener("click", validateForm);
